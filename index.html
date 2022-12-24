@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            
+             background-image: url(https://st2.depositphotos.com/2963315/6543/i/950/depositphotos_65438241-stock-photo-industrial-site-view-with-cranes.jpg); 
+             background-repeat:no-repeat;
+             background-size: cover;
+            text-align: center;
+        }
+
+        form {
+            width: fit-content;
+            height: fit-content;
+            border: 0.2ch solid black;
+            padding: 2%;
+            text-align: center;
+            margin-left: 35%;
+            margin-top: 5%;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+
+        <h1> Find Workers </h1>
+    </header>
+    <main>
+        <section>
+            <h2>Add new Job :</h2>
+            <form action="" id="JobForm">
+                <label for="name">Name</label>
+                <input type="text" name="name">
+                <br>
+                <br>
+                <label for="major">Major : </label>
+                <input type="text" name="Major" placeholder="Enter your specialist ">
+
+                <br>
+                <br>
+                <label for="price">Price</label>
+                <input type="text" name="price">
+                <br>
+                <br>
+                <label for="imgurl">Image Url</label>
+                <input type="text" name="imgurl">
+                <br>
+                <br>
+                
+                <input type="submit" value="Add">
+            </form>
+        </section>
+
+        <div id="Jobs">
+            <h3> List of Workers :</h3>
+        </div>
+    </main>
+    <script src="app.js"></script>
+</body>
+
+</html>
