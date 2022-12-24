@@ -1,9 +1,10 @@
 'use strict';
 
-function Job(name, major, imgurl, price) {
+
+function Job(name, major, phone, price) {
         this.name = name;
         this.major = major;
-        this.imagePath = imgurl;
+        this.phone = phone;
         this.price = price;
         Jobs.push(this);
 
@@ -27,11 +28,12 @@ function Job(name, major, imgurl, price) {
         const m = document.createElement('m');
         divEle.appendChild(m);
             m.textContent = this.major;
+            
 
     
-        const img = document.createElement('img');
-        divEle.appendChild(img);
-        img.setAttribute('src', this.imagePath);
+        const phone = document.createElement('phone');
+        divEle.appendChild(phone);
+        phone.textContent = this.phone;
 
 
         const p2 = document.createElement('p');
@@ -46,10 +48,11 @@ function Job(name, major, imgurl, price) {
 
 
 
-const Plumber = new Job('Ahmed', 'plumber', 'images/plumber.jpg','15');
-const Baker = new Job('Mohammad', 'baker', 'images/baker.png','15');
-const Carpenter = new Job('Khaled', 'carpenter', 'images/carpenter.jpg','15');
-const Smith = new Job('Sameh', 'smith', 'images/smith.jpg','15');
+    const Plumber = new Job('Ahmed', 'plumber', '99999999','15');
+    const Baker = new Job('Mohammad', 'baker', '99999999999','15');
+    const Carpenter = new Job('Khaled', 'carpenter', '9999999','15');
+    const Smith = new Job('Sameh', 'smith', '99999999','15');
+
 
 
 for (let j = 0; j < Jobs.length; j++) {
@@ -59,16 +62,17 @@ for (let j = 0; j < Jobs.length; j++) {
 
 
 let htmlForm = document.getElementById('JobForm');
-htmlForm.addEventListener("submit", addNewJob);
+htmlForm.addEventListener("submit", addNewJob)
 
 function addNewJob(event) {
     event.preventDefault();
+    
     let name = event.target.name.value;
     let major = event.target.major.value;
-    let imgurl = event.target.imgurl.value;
+    let phone = event.target.phone.value;
     let price = event.target.price.value;
 
-    let newJob = new Job(name,major, imgurl,price);
+    let newJob = new Job(name, major, phone, price);
     newJob.renderJobs();
     saveToLocalStorage();
 }
@@ -78,7 +82,6 @@ function addNewJob(event) {
 // 2. allDrinks in an array, and setItem methos, takes a string 
 function saveToLocalStorage() {
     const stringifiedArr = JSON.stringify(Jobs);
-    console.log("Did the array converted to string?", stringifiedArr);
     localStorage.setItem("Jobs", stringifiedArr);
 
 }
@@ -93,12 +96,11 @@ function getFromLocalStorage() {
     const JobsArr = JSON.parse(jobsStr);
     if (JobsArr !== null) {
         for (let i = Jobs.length; i < JobsArr.length; i++) {
-            const temp = new Job(JobsArr[i].name, JobsArr[i].major, JobsArr[i].imagePath);
+            const temp = new Job(JobsArr[i].name, JobsArr[i].major, JobsArr[i].phone);
             temp.renderJobs();
         }
     }
 
 }
-
 
 getFromLocalStorage();
